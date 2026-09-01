@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新生指南 - 欢迎新同学</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        header {
+            background: linear-gradient(to right, #4a00e0, #8e2de2);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        .welcome-page {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .welcome-icon {
+            font-size: 4rem;
+            color: #4a00e0;
+            margin-bottom: 20px;
+        }
+        
+        .welcome-message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .module-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #4a00e0;
+        }
+        
+        .module-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .module-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #4a00e0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background: #3a00b0;
+        }
+        
+        .links-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .links-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .links-list li:hover {
+            background: #e9ecef;
+        }
+        
+        .links-list a {
+            color: #4a00e0;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+        }
+        
+        .links-list a i {
+            margin-right: 10px;
+        }
+        
+        .links-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .nav-button {
+            padding: 10px 15px;
+            background: #4a00e0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            background: #3a00b0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 600px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .welcome-icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1>欢迎新同学加入计数大家庭</h1>
+        </header>
+        
+        <div class="content">
+            <!-- 欢迎页面 -->
+            <div id="welcome" class="page active">
+                <div class="welcome-page">
+                    <div class="welcome-icon">
+                        <i class="fas fa-smile-beam"></i>
+                    </div>
+                    <p class="welcome-message">
+                        亲爱的同学，欢迎加入我们的大家庭！在这里，你将开始一段全新的学习旅程。
+                        我们为你准备了以下指南模块，帮助你快速适应新环境。
+                    </p>
+                    
+                    <div class="modules-grid">
+                        <div class="module-card" onclick="showModule('professional')">
+                            <div class="module-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3 class="module-title">专业介绍</h3>
+                            <p class="module-description">了解你的专业课程、发展方向和就业前景</p>
+                        </div>
+                        
+                        <div class="module-card" onclick="showModule('map')">
+                            <div class="module-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h3 class="module-title">学校地图</h3>
+                            <p class="module-description">校园布局、重要地点和导航指南</p>
+                        </div>
+                        
+                        <div class="module-card" onclick="showModule('repair')">
+                            <div class="module-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="module-title">卫生报修</h3>
+                            <p class="module-description">宿舍报修流程和相关服务联系方式</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 专业介绍模块 -->
+            <div id="professional" class="page">
+                <h2><i class="fas fa-book-open"></i> 专业介绍</h2>
+                <p>在这里你可以了解所学专业的详细信息：</p>
+                
+                <ul class="links-list">
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 计算机科学专业培养方案</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 数据科学与大数据技术课程设置</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 人工智能专业发展方向</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 专业选修课指南</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 毕业生就业情况报告</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-arrow-left"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 学校地图模块 -->
+            <div id="map" class="page">
+                <h2><i class="fas fa-map-marked-alt"></i> 学校地图</h2>
+                <p>校园导航与重要地点：</p>
+                
+                <ul class="links-list">
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 交互式校园地图</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 教学楼位置与教室编号规则</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 图书馆楼层指引</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 食堂与美食广场分布</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 体育场馆开放时间</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-arrow-left"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 卫生报修模块 -->
+            <div id="repair" class="page">
+                <h2><i class="fas fa-tools"></i> 卫生报修</h2>
+                <p>宿舍设施报修及相关服务：</p>
+                
+                <ul class="links-list">
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 在线报修系统</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 报修流程说明</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 紧急维修联系电话</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 宿舍管理规定</a></li>
+                    <li><a href="#"><i class="fas fa-external-link-alt"></i> 常见问题解答</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-arrow-left"></i> 返回首页</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2026 计数学院新生指南系统 | 为新生提供便捷的校园信息服务</p>
+    </footer>
+
+    <script>
+        // 页面切换功能
+        function showWelcome() {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('welcome').classList.add('active');
+        }
+        
+        function showModule(moduleId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(moduleId).classList.add('active');
+        }
+        
+        // 模拟二维码扫描后直接进入欢迎页面
+        window.onload = function() {
+            showWelcome();
+            
+            // 如果有hash参数，直接跳转到对应模块（实际应用中可根据二维码参数调整）
+            if(window.location.hash) {
+                const moduleId = window.location.hash.substring(1);
+                if(moduleId && document.getElementById(moduleId)) {
+                    showModule(moduleId);
+                }
+            }
+        };
+    </script>
+</body>
+</html>
