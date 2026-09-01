@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>新生指南 - 欢迎新同学</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e6f7ff 0%, #b3e0ff 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            margin: 15px 0;
+        }
+        
+        header {
+            background: linear-gradient(to right, #4dabf7, #339af0);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        .welcome-page {
+            text-align: center;
+            padding: 25px 15px;
+        }
+        
+        .welcome-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        .welcome-message {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .module-card:active {
+            transform: scale(0.98);
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border: 2px solid #339af0;
+        }
+        
+        .module-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #339af0;
+        }
+        
+        .module-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .module-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.4;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #339af0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            min-width: 120px;
+            min-height: 44px;
+        }
+        
+        .back-button:active {
+            background: #228be6;
+            transform: scale(0.98);
+        }
+        
+        .back-button:hover {
+            background: #228be6;
+        }
+        
+        .links-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .links-list li {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+        
+        .links-list li:active {
+            background: #e9ecef;
+        }
+        
+        .links-list li:hover {
+            background: #e9ecef;
+        }
+        
+        .links-list a {
+            color: #339af0;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            min-height: 44px;
+        }
+        
+        .links-list a i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .links-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+            gap: 15px;
+        }
+        
+        .nav-button {
+            padding: 12px 20px;
+            background: #339af0;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+            min-width: 120px;
+            min-height: 44px;
+        }
+        
+        .nav-button:active {
+            background: #228be6;
+            transform: scale(0.98);
+        }
+        
+        .nav-button:hover {
+            background: #228be6;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #2c3e50;
+            font-size: 0.9rem;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 10px 15px;
+        }
+        
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+            text-decoration: none;
+        }
+        
+        .mobile-nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: #339af0;
+        }
+        
+        /* 子页面样式 */
+        .subpage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .subpage-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .subpage-card:active {
+            transform: scale(0.98);
+        }
+        
+        .subpage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            border-color: #339af0;
+        }
+        
+        .subpage-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #339af0;
+        }
+        
+        .subpage-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .subpage-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* 图片放大查看样式 */
+        .zoomable-image {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .zoomable-image:active {
+            transform: scale(0.98);
+        }
+        
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: hidden;
+            touch-action: none;
+        }
+        
+        .modal-content {
+            display: block;
+            margin: auto;
+            max-width: 95%;
+            max-height: 95%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 2001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+        
+        /* 移动端手势操作提示 */
+        .gesture-hint {
+            position: absolute;
+            bottom: 70px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #ccc;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 8px;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* 移动端优化 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                margin: 10px 0;
+                border-radius: 12px;
+            }
+            
+            header {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .welcome-page {
+                padding: 20px 10px;
+            }
+            
+            .welcome-icon {
+                font-size: 3rem;
+            }
+            
+            .welcome-message {
+                font-size: 1.1rem;
+                margin-bottom: 25px;
+            }
+            
+            .modules-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .module-card {
+                padding: 15px;
+            }
+            
+            .module-icon {
+                font-size: 2rem;
+            }
+            
+            .module-title {
+                font-size: 1.1rem;
+            }
+            
+            .links-list a {
+                font-size: 0.95rem;
+            }
+            
+            .mobile-nav {
+                display: flex;
+                justify-content: space-around;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .nav-button, .back-button {
+                width: 100%;
+                max-width: 280px;
+            }
+            
+            /* 子页面移动端优化 */
+            .subpage-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .subpage-card {
+                padding: 20px;
+            }
+            
+            .subpage-icon {
+                font-size: 2.5rem;
+            }
+            
+            .subpage-title {
+                font-size: 1.2rem;
+            }
+            
+            /* 移动端图片模态框优化 */
+            .modal-content {
+                max-width: 100%;
+                max-height: 100%;
+            }
+            
+            .close-modal {
+                top: 10px;
+                right: 10px;
+                width: 35px;
+                height: 35px;
+                font-size: 25px;
+            }
+            
+            .image-caption {
+                bottom: 10px;
+                font-size: 14px;
+            }
+            
+            .gesture-hint {
+                display: block;
+                animation: fadeInOut 3s forwards;
+            }
+            
+            @keyframes fadeInOut {
+                0% { opacity: 0; }
+                20% { opacity: 1; }
+                80% { opacity: 1; }
+                100% { opacity: 0; }
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3rem;
+            }
+            
+            .welcome-message {
+                font-size: 1rem;
+            }
+            
+            .module-card {
+                padding: 12px;
+            }
+            
+            .links-list li {
+                padding: 12px;
+            }
+            
+            .links-list a {
+                font-size: 0.9rem;
+            }
+            
+            /* 子页面移动端优化 */
+            .subpage-card {
+                padding: 18px;
+            }
+            
+            .subpage-icon {
+                font-size: 2.2rem;
+            }
+            
+            .subpage-title {
+                font-size: 1.1rem;
+            }
+            
+            .subpage-description {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* 防止移动端缩放 */
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h1>欢迎新同学加入计数大家庭</h1>
+        </header>
+        
+        <div class="content">
+            <!-- 欢迎页面 -->
+            <div id="welcome" class="page active">
+                <div class="welcome-page">
+                    <div class="welcome-icon">
+                        <img src="images/透明底院徽.png" alt="院徽" style="width: 80px; height: 80px;">
+                    </div>
+                    <p class="welcome-message">
+                        亲爱的同学，欢迎加入我们的大家庭！在这里，你将开始一段全新的学习旅程。
+                        我们为你准备了以下指南模块，帮助你快速适应新环境。
+                    </p>
+                    
+                    <div class="modules-grid">
+                        <div class="module-card" onclick="showModule('professional')">
+                            <div class="module-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <h3 class="module-title">学术启航·专业全景导航</h3>
+                        </div>
+                        
+                        <div class="module-card" onclick="showModule('map')">
+                            <div class="module-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <h3 class="module-title">校园生活·全能生活指南</h3>
+                        </div>
+                        
+                        <div class="module-card" onclick="showModule('library')">
+                            <div class="module-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3 class="module-title">学习资源·宝藏资源工具</h3>
+                        </div>
+                        
+                        <div class="module-card" onclick="showModule('development')">
+                            <div class="module-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h3 class="module-title">成长发展·潜能无限启航</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 专业介绍模块 - 主页面 -->
+            <div id="professional" class="page">
+                <h2><i class="fas fa-book-open"></i> 学术启航·专业全景导航</h2>
+                <p>深入了解专业设置、师资力量与就业前景：</p>
+                
+                <div class="subpage-grid">
+                    <div class="subpage-card" onclick="showModule('professional-overview')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="subpage-title">专业速览</h3>
+                        <p class="subpage-description">全面了解各专业设置、课程体系和学习路径，为你的学术生涯做好规划。</p>
+                    </div>
+                    
+                    <div class="subpage-card" onclick="showModule('faculty')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3 class="subpage-title">师资队伍</h3>
+                        <p class="subpage-description">认识优秀的教授团队和学术导师，了解他们的研究方向和教学特色。</p>
+                    </div>
+                    
+                    <div class="subpage-card" onclick="showModule('employment')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="subpage-title">就业启蒙</h3>
+                        <p class="subpage-description">探索专业就业前景和职业发展路径，为未来职业生涯做好准备。</p>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-arrow-left"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 专业速览子页面 -->
+            <div id="professional-overview" class="page">
+                <h2><i class="fas fa-globe"></i> 专业速览</h2>
+                <p>全面了解各专业设置与特色：</p>
+                
+                <ul class="links-list">
+                    <li><a href="https://csm.fjut.edu.cn/jsjkxyjszy/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 计算机科学与技术专业介绍</a></li>
+                    <li><a href="https://csm.fjut.edu.cn/rjgczy/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 软件工程专业介绍</a></li>
+                    <li><a href="https://csm.fjut.edu.cn/xxyjskxzy/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 信息与计算科学专业介绍</a></li>
+                    <li><a href="https://csm.fjut.edu.cn/sjkxydsjjszy/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 数据科学与大数据技术专业介绍</a></li>
+                    <li><a href="https://csm.fjut.edu.cn/wlkjaqzy/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 网络空间安全专业介绍</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showModule('professional')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 师资队伍子页面 -->
+            <div id="faculty" class="page">
+                <h2><i class="fas fa-chalkboard-teacher"></i> 师资队伍</h2>
+                <p>认识优秀的教授团队和学术导师：</p>
+                
+                <ul class="links-list">
+                    <li><a href="https://csm.fjut.edu.cn/jsjkxyjs_11785/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 计算机科学与技术教研室介绍</a></li>
+                    <li><a href="https://csm.fjut.edu.cn/rjgc_11786/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 软件工程教研室介绍</a></li>
+                    <li><a href="https://csm.fjut.edu.cn/xxyjskx_11787/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 信息与计算科学教研室介绍</a></li>
+                    <li><a href="https://csm.fjut.edu.cn/wlkjaq_11788/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 网络空间安全教研室介绍</a></li>
+                    <li><a href="https://csm.fjut.edu.cn/sjkxydsjjs_11789/list.htm" target="_blank"><i class="fas fa-external-link-alt"></i> 数据科学与大数据技术教研室介绍</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showModule('professional')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 就业启蒙子页面 -->
+            <div id="employment" class="page">
+                <h2><i class="fas fa-briefcase"></i> 就业启蒙</h2>
+                <p>探索专业就业前景和职业发展路径：</p>
+                
+                <ul class="links-list">
+                    <li><a href="https://fjut.jysd.com/" target="_blank"><i class="fas fa-external-link-alt"></i> "苍霞启航"智慧就业网</a></li>
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showModule('professional')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 学校地图模块 - 主页面 -->
+            <div id="map" class="page">
+                <h2><i class="fas fa-map-marked-alt"></i> 校园生活·全能生活指南</h2>
+                <p>探索校园环境、生活服务与美食体验，获取实用生活信息：</p>
+                
+                <div class="subpage-grid">
+                    <div class="subpage-card" onclick="showModule('campus-map')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <h3 class="subpage-title">校园地图</h3>
+                        <p class="subpage-description">查看鼓山、旗山校区手绘地图与快递站点分布，快速熟悉校园环境。</p>
+                    </div>
+
+                    <div class="subpage-card" onclick="showModule('tips')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="subpage-title">温馨提示</h3>
+                        <p class="subpage-description">获取校园生活实用小贴士，帮助你更快适应大学生活，享受便利的校园服务。</p>
+                    </div>
+
+                    <div class="subpage-card" onclick="showModule('dept-contact')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3 class="subpage-title">校内部门咨询</h3>
+                        <p class="subpage-description">查询校内各部门联系电话，点按号码即可直接拨打。</p>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-arrow-left"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 校园地图子页面（含快递站点） -->
+            <div id="campus-map" class="page">
+                <h2><i class="fas fa-map"></i> 校园地图</h2>
+                <p>鼓山校区、旗山校区手绘地图与快递服务信息，点击图片可放大查看：</p>
+
+                <!-- 鼓山校区手绘地图 -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <h3 style="color: #339af0; margin-bottom: 15px;"><i class="fas fa-map-pin"></i> 鼓山校区手绘地图</h3>
+                    <img src="images/鼓山校区彩绘图.jpg" alt="鼓山校区手绘地图" class="zoomable-image" onclick="openImageModal(this)" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+
+                <!-- 旗山校区手绘地图 -->
+                <div style="text-align: center; margin: 20px 0;">
+                    <h3 style="color: #339af0; margin-bottom: 15px;"><i class="fas fa-map-pin"></i> 旗山校区手绘地图</h3>
+                    <img src="images/快递站大致分布图.jpg" alt="旗山校区手绘地图（含快递站点分布）" class="zoomable-image" onclick="openImageModal(this)" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                </div>
+
+                <!-- 快递服务指南 -->
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: #339af0; margin-bottom: 15px;"><i class="fas fa-info-circle"></i> 快递服务指南</h3>
+                    <div style="line-height: 1.6; color: #555;">
+                        <p><strong>福工快递超市（校外、超过48小时未取快递收取滞留费）：</strong>中通快递、京东</p>
+                        <p><strong>妈妈驿站（校外）：</strong>圆通快递</p>
+                        <p><strong>菜鸟驿站（校内）：</strong>申通快递、韵达快递、极兔速递、顺丰速运</p>
+                        <p><strong>邮政快递（校内）：</strong>邮政快递</p>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showModule('map')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 温馨提示子页面 -->
+            <div id="tips" class="page">
+                <h2><i class="fas fa-lightbulb"></i> 温馨提示</h2>
+                <p>校园生活实用信息与小贴士：</p>
+                
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: #339af0; margin-bottom: 20px; text-align: center;"><i class="fas fa-hands-helping"></i> 新生校园生活指南</h3>
+                    
+                    <div style="line-height: 1.8; color: #444;">
+                        <p>亲爱的2026级新生：
+首先，热烈欢迎你们踏入充满活力与希望的校园，正式加入计算机与数据科学学院这个温馨且富有创造力的大家庭！为帮助大家平安、顺畅地融入新环境，现就开学事宜做以下几点温馨提醒：
+</p>
+                        
+                        <p><strong>1.妥善携带保管个人财物：</strong>录取通知书、身份证、银行卡、户口本、学籍档案等重要证件务必随身携带，切勿随意放置，防止丢失或被盗。</p>
+                        
+                        <p><strong>2.谨防网络诈骗风险：</strong>不随意添加陌生人为好友，不随意向他人转账，不随意扫描未知二维码。有关学校的内容信息，请认准官方渠道完成。 </p>
+                        
+                        <p><strong>3.远离"兼职/贷款"陷阱：</strong>坚决抵制"校园贷""培训贷"等行为，对"兼职刷单""中奖返利""冒充学长学姐兜售物品"等常见诈骗手段保持高度警觉。</p>
+                        
+                        <p><strong>4.谨防物资采购陷阱：</strong>拒绝校园及宿舍楼内各类推销，如学习资料、培训等，对于那些流动宣传、四处兜售的人员，切勿予以理会。</p>
+                        
+                        <p><strong>5.出行安全：</strong>入学途中选择正规交通工具，遵守交通规则。乘坐公共交通时保管好个人物品，防范扒手。自驾到校要提前规划路线，留意交通状况，保障自身安全。</p>
+
+                        <p><strong>6.警惕冒充人员：</strong>注意防范冒充学校老师、辅导员、工作人员等身份的诈骗行为，涉及缴费、提供个人信息等要求时，务必通过官方渠道核实对方身份。</p>
+
+                        <p><strong>7.心理调适：</strong>面对新环境可能产生的压力和不适应，可以及时与助导或者辅导员进行交流，保持积极心态。</p> 
+
+                        <p><strong>8.良好的社交：</strong>在宿舍生活里，要尊重他人观点和习惯，以平和心态沟通，避免不必要冲突，主动与舍友和同学交流，营造和谐人际关系。</p>
+
+                        <p><strong>9.及时修改收货地址：</strong>在入学前，记得将常用的快递收货地址更新为学校的准确地址，避免因地址未及时修改导致快递无法正常接收或被他人冒领。同时，取件时注意核实身份信息，确保个人物品安全。
+</p>
+                        
+                        <p>祝愿每一位新同学都能在计算机与数据科学学院拥有一段平安、充实、难忘的大学时光！</p>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showModule('map')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+                </div>
+            </div>
+
+            <!-- 校内部门咨询子页面 -->
+            <div id="dept-contact" class="page">
+                <h2><i class="fas fa-phone-alt"></i> 校内部门咨询</h2>
+                <p>校内各部门联系电话，点按号码即可直接拨打：</p>
+
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: #339af0; margin-bottom: 20px; text-align: center;"><i class="fas fa-phone-alt"></i> 各部门联系电话</h3>
+                    <div style="line-height: 2; color: #444;">
+                        <p><strong>武保部：</strong><a href="tel:059122863215" style="color: #339af0; text-decoration: none;">0591-22863215</a></p>
+                        <p><strong>医务室：</strong><a href="tel:059122863390" style="color: #339af0; text-decoration: none;">0591-22863390</a></p>
+                        <p><strong>学生就业创业中心：</strong><a href="tel:059122863316" style="color: #339af0; text-decoration: none;">0591-22863316</a>、<a href="tel:059122863317" style="color: #339af0; text-decoration: none;">0591-22863317</a></p>
+                        <p><strong>学生宿舍管理中心</strong></p>
+                        <p style="padding-left: 2em;">北区：<a href="tel:059122863381" style="color: #339af0; text-decoration: none;">0591-22863381</a></p>
+                        <p style="padding-left: 2em;">南区：<a href="tel:059122863355" style="color: #339af0; text-decoration: none;">0591-22863355</a></p>
+                        <p style="padding-left: 2em;">鼓山校区：<a href="tel:059183962617" style="color: #339af0; text-decoration: none;">0591-83962617</a></p>
+                        <p><strong>学生资助管理中心：</strong><a href="tel:059122863312" style="color: #339af0; text-decoration: none;">0591-22863312</a></p>
+                        <p><strong>图书馆：</strong><a href="tel:059122863396" style="color: #339af0; text-decoration: none;">0591-22863396</a></p>
+                        <p><strong>后勤管理处：</strong><a href="tel:059122863166" style="color: #339af0; text-decoration: none;">0591-22863166</a></p>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showModule('map')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+                </div>
+            </div>
+
+            <!-- 图书馆服务模块 - 主页面 -->
+            <div id="library" class="page">
+                <h2><i class="fas fa-book"></i> 学习资源·宝藏资源工具</h2>
+                <p>探索图书馆资源与服务，助力你的学习之旅：</p>
+                
+                <div class="subpage-grid">
+                    <div class="subpage-card" onclick="showModule('library-intro')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h3 class="subpage-title">本馆简介</h3>
+                        <p class="subpage-description">了解图书馆的历史、馆藏特色和学科信息服务理念，更好地利用图书馆资源。</p>
+                    </div>
+                    
+                    <div class="subpage-card" onclick="showModule('library-hours')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 class="subpage-title">开放时间</h3>
+                        <p class="subpage-description">查看图书馆各区域的开放时间，合理安排你的学习和阅读计划。</p>
+                    </div>
+                    
+                    <div class="subpage-card" onclick="showModule('library-borrow')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3 class="subpage-title">图书借还</h3>
+                        <p class="subpage-description">了解图书借阅规则、续借方法和归还流程等，轻松借阅所需图书。</p>
+                    </div>
+                    
+                    <div class="subpage-card" onclick="showModule('library-seat')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-chair"></i>
+                        </div>
+                        <h3 class="subpage-title">座位预约</h3>
+                        <p class="subpage-description">了解座位预约，确保学习空间，提高学习效率。</p>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-arrow-left"></i> 返回首页</button>
+                </div>
+            </div>
+
+            <!-- 本馆简介子页面 -->
+            <div id="library-intro" class="page">
+                <h2><i class="fas fa-info-circle"></i> 本馆简介</h2>
+                <p>欢迎使用图书馆！在这里了解我们的历史、资源与服务：</p>
+
+                <div style="background: #f8f9fa; padding: 25px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: #339af0; margin-bottom: 20px; text-align: center;"><i class="fas fa-book-reader"></i> 欢迎来到图书馆</h3>
+                    <div style="line-height: 1.8; color: #444;">
+            <p>福建理工大学图书馆由旗山校区中心馆、鼓山校区分馆组成，总建筑面积35656㎡。图书馆坚持"以人为本"的服务理念，采取开放的资源布局和现代化的管理手段，实现分馆间信息的互联互通和一体化管理，每周对外开放时间达112小时，为全校师生提供书刊借阅、馆际互借、文献传递、读者培训、文献检索教学、学科分析报告等多元化的信息资源服务，不断推进图书馆的可持续建设发展，朝着建设一流应用型大学图书馆的目标努力。
+
+图书馆现设有文献建设部、读者服务部、学科信息部、技术部等7个部门，拥有一支知识结构合理、具有较强业务水平的图书馆专业人员队伍。</p>
+            <p><strong>一、馆藏资源建设</strong></p>
+            <p>根据学校办学方向和学科建设走向，重点加强优势明显、影响较大、发展迅速、成果颇丰的重点领域文献的收藏，馆藏文献内容与学科专业建设紧密结合，形成以建筑、机械、电子为特色，以计算机科学、自动控制、材料等高新技术学科为重点，兼顾基础学科的工、理、管、文相结合的多学科藏书体系。截至2024年9月，馆藏纸质图书总量232.92万余册。图书馆近年来对文献资源建设类型进行了适时调整，着力进行数字资源建设，积极拓展信息服务能力，2017年迄今，总共采购数据库63个，其中中文数据库45个，外文数据库18个，主要有Web of Science、Ei Village美国工程索引、ScienceDirect、IEEE/IET Electronic Library、SpringerLink、Wiley Online Library、ACS、EBSCO Host、清华同方知网数据库（CNKI）、万方数据知识服务平台、读秀知识库、超星（汇雅）电子图书等数据库，共有电子图书205万余种，电子期刊2.6万余种，提供每天24小时在线服务。
+</p>
+            
+            <p><strong>二、学科信息服务</strong></p>
+            <p>坚持以学科建设为龙头，围绕重点学科、学位点和专业集群建设，开展学科服务和情报分析，完成我校各类学科分析报告多篇，利用各类数据挖掘工具，科学分析我校学科总体发展情况、重点学科发展情况，为学校教学科研建设提供助力。</p>
+            
+            <p><strong>三、资源共享平台</strong></p>
+            <p>图书馆目前是中国高等教育文献保障系统（CALIS）、中国高校人文社会科学文献保障系统（CASHL）成员馆，是全国建筑院校情报网、福建省图书馆学会、福建省科学技术情报学会的理事单位，是福建省高校数字图书馆（FULink）核心成员馆和"三创"信息服务工作组组长单位、国家知识产权信息公共服务网点，已实现省内外各高校图书馆电子文献资源的自动传递及福州大学城各高校师生纸质文献借阅，构建了相对完善的文献资源保障体系，让广大师生足不出户就能随时通过校园网检索、获取所需文献信息资源。
+</p>
+            
+            <p><strong>四、智能信息服务</strong></p>
+            <p>2013年在福建省高校中率先采用RFID技术实行自助借还服务，实现图书流通的智能管理，成为省内高校首家使用超高频RFID技术改造图书管理的典范。开通微博、微信公众平台，读者可通过微信平台荐购图书，拓展了信息服务渠道。加快数字化资源和移动图书馆建设，扩大数字化资源的占比，提供电子书借阅机自助下载服务，建设了自助文印系统、空间与座位预约系统，极大方便读者利用图书馆，实现了业务及办公管理、书刊集成管理、数字资源服务三位一体统一管理、高效服务的管理与服务模式。
+
+</p>
+            
+            <p><strong>五、校园文化建设</strong></p>
+            <p>图书馆设有"琴南书院"，为晚清书斋风格，收藏与展示学校创办人之一林纾先生相关的文献资料，书院将空间多种功能融为一体，实现"展藏一体"、"情景学习"、"人在书中"，既是文献保护的特藏库，又是展示校史、开展专业授课的第二课堂。
+
+图书馆收藏有文津阁版《四库全书》，《古今图书集成》和学校的福建地方文献整理与研究中心编辑出版的《福建文献汇编》第一辑、第二辑等。
+
+</p>
+            
+            <p>此外，图书馆重视加强文化推广服务，每年定期开展的"世界读书日"系列读书节活动，如读书交流会、书展、画展、讲座、电影欣赏、诗歌朗诵、演讲等，文化活动精彩纷呈，已成为校园文化的品牌。每年与校宣传部、学工部、团委及各学院积极沟通合作，不定期开展设计作品展、毕业作品展、不断丰富学生的业余生活。同时还注重新媒体手段的应用，先后推出微博、微信公众号、视频号和抖音账号，推广馆内资源，发布活动通告，通过移动平台加强与读者间的联系，提升了读者信息获取速度和阅读效率。</p>
+            
+
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-button" onclick="showModule('library')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+        <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+    </div>
+</div>
+            
+            <!-- 图书馆开放时间子页面 -->
+            <div id="library-hours" class="page">
+                <h2><i class="fas fa-clock"></i> 图书馆开放时间</h2>
+                <p>了解图书馆各区域的开放时间和服务安排：</p>
+
+                <div style="text-align: center; margin: 20px 0;">
+                    <img src="images/开放时间.png"
+                         alt="图书馆开放时间图示"
+                         class="zoomable-image"
+                         onclick="openImageModal(this)"
+                         style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">图书馆各区域开放时间</p>
+                </div>
+
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <h3 style="color: #339af0; margin-bottom: 15px;"><i class="fas fa-info-circle"></i> 开放时间指南</h3>
+                    <div style="line-height: 1.6; color: #555;">
+            
+            <!-- 注意事项 -->
+            <p style="margin-top: 15px; color: #d35400; font-size: 0.95em;"><strong>注意事项：</strong></p>
+            <ul style="color: #555; line-height: 1.6; margin-left: 20px;">
+                <li>1.每周周四下午政治与业务学习</li>
+                <li>2.法定节假日开放时间另行通知。</li>
+                <li>3.各库室关闭前15分钟开始清场，望读者予以配合。</li>
+       
+            
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <button class="nav-button" onclick="showModule('library')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+        <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+    </div>
+</div>
+            
+            
+            
+            
+            <!-- 图书借还子页面 -->
+            <div id="library-borrow" class="page">
+                <h2><i class="fas fa-exchange-alt"></i> 图书借还</h2>
+                <p>了解图书借阅规则和流程：</p>
+                
+                <ul class="links-list">
+                    <li><a href="https://mp.weixin.qq.com/s/Aa91V3BIwJXiYp3cQqX43A" target="_blank"><i class="fas fa-external-link-alt"></i> 图书借还</a></li>
+                   
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showModule('library')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 座位预约子页面 -->
+            <div id="library-seat" class="page">
+                <h2><i class="fas fa-chair"></i> 座位预约</h2>
+                <p>预约图书馆座位，确保学习空间：</p>
+                
+                <ul class="links-list">
+                    <li><a href="https://mp.weixin.qq.com/s/pwYaKUQlBqiz6WxQol5zbA" target="_blank"><i class="fas fa-external-link-alt"></i> 座位预约</a></li>
+                    
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showModule('library')"><i class="fas fa-arrow-left"></i> 返回上一级</button>
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-home"></i> 返回首页</button>
+                </div>
+            </div>
+
+
+            
+            <!-- 成长发展模块 - 主页面 -->
+            <div id="development" class="page">
+                <h2><i class="fas fa-rocket"></i> 成长发展</h2>
+                <p>探索校园各类信息服务，开启多彩大学生活：</p>
+
+                <div class="subpage-grid">
+                    <div class="subpage-card" onclick="showModule('portal')">
+                        <div class="subpage-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h3 class="subpage-title">信息门户</h3>
+                        <p class="subpage-description">访问校园各类信息服务，获取最新校园动态，享受便捷的校园生活服务。</p>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-arrow-left"></i> 返回首页</button>
+                </div>
+            </div>
+            
+            <!-- 信息门户子页面 -->
+            <div id="portal" class="page">
+                <h2><i class="fas fa-tools"></i> 信息门户</h2>
+                <p>多样化的平台功能：</p>
+                
+                <ul class="links-list">
+                    <li><a href="https://scpt-443.webvpn.fjut.edu.cn/#/allComponent?lightIndex=0&plateId=634848110215958528"><i class="fas fa-external-link-alt"></i> 三创平台</a></li>
+                    <li><a href="https://jwxt-443.webvpn.fjut.edu.cn/jwglxt/xtgl/login_slogin.html"><i class="fas fa-external-link-alt"></i> 教务管理系统</a></li>
+                    <li><a href="https://ehall-443.webvpn.fjut.edu.cn/new/index.html?browser=no"><i class="fas fa-external-link-alt"></i> 办事大厅</a></li>
+                    <li><a href="https://selfservice-8080.webvpn.fjut.edu.cn/selfservice/"><i class="fas fa-external-link-alt"></i> 校园网自助服务系统</a></li>
+                    <li><a href="https://www-cnki-net-443.webvpn.fjut.edu.cn/"><i class="fas fa-external-link-alt"></i> 中国知网</a></li>
+                   
+                </ul>
+                
+                <div class="nav-buttons">
+                    <button class="nav-button" onclick="showWelcome()"><i class="fas fa-arrow-left"></i> 返回首页</button>
+                </div>
+        </div>
+    </div>
+    
+    <!-- 移动端底部导航 -->
+        <nav class="mobile-nav">
+        <a href="javascript:void(0)" class="mobile-nav-item" onclick="showWelcome()">
+            <div class="mobile-nav-icon"><i class="fas fa-home"></i></div>
+            <span>首页</span>
+        </a>
+        <a href="javascript:void(0)" class="mobile-nav-item" onclick="showModule('professional')">
+            <div class="mobile-nav-icon"><i class="fas fa-book-open"></i></div>
+            <span>学术启航</span>
+        </a>
+        <a href="javascript:void(0)" class="mobile-nav-item" onclick="showModule('map')">
+            <div class="mobile-nav-icon"><i class="fas fa-map-marked-alt"></i></div>
+            <span>校园生活</span>
+        </a>
+        <a href="javascript:void(0)" class="mobile-nav-item" onclick="showModule('library')">
+            <div class="mobile-nav-icon"><i class="fas fa-book"></i></div>
+            <span>学习资源</span>
+        </a>
+        <a href="javascript:void(0)" class="mobile-nav-item" onclick="showModule('development')">
+            <div class="mobile-nav-icon"><i class="fas fa-rocket"></i></div>
+            <span>成长发展</span>
+        </a>
+    </nav>
+    
+    <!-- 图片放大查看模态框 -->
+    <div id="imageModal" class="image-modal">
+        <span class="close-modal" onclick="closeImageModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="image-caption" id="modalCaption"></div>
+        <div class="gesture-hint">双指缩放可调整图片大小</div>
+    </div>
+    
+    <footer>
+        <p>© 2026 计数学院新生指南系统 | 为新生提供便捷的校园信息服务</p>
+    </footer>
+
+    <script>
+        // 页面切换功能
+        function showWelcome() {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('welcome').classList.add('active');
+            scrollToTop();
+        }
+        
+        function showModule(moduleId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(moduleId).classList.add('active');
+            scrollToTop();
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // 图片放大查看功能
+        function openImageModal(img) {
+            const modal = document.getElementById("imageModal");
+            const modalImg = document.getElementById("modalImage");
+            const captionText = document.getElementById("modalCaption");
+            
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            captionText.innerHTML = img.alt;
+            
+            // 禁止背景滚动
+            document.body.style.overflow = "hidden";
+        }
+        
+        function closeImageModal() {
+            document.getElementById("imageModal").style.display = "none";
+            // 恢复背景滚动
+            document.body.style.overflow = "auto";
+        }
+        
+        // 点击模态框背景关闭
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeImageModal();
+            }
+        });
+        
+        // 模拟二维码扫描后直接进入欢迎页面
+        window.onload = function() {
+            showWelcome();
+            
+            // 如果有hash参数，直接跳转到对应模块（实际应用中可根据二维码参数调整）
+            if(window.location.hash) {
+                const moduleId = window.location.hash.substring(1);
+                if(moduleId && document.getElementById(moduleId)) {
+                    showModule(moduleId);
+                }
+            }
+        };
+        
+        // 防止移动端下拉刷新
+        document.addEventListener('touchmove', function(e) {
+            if (e.touches.length > 1) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // 阻止双击缩放
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+        
+        // 键盘ESC键关闭模态框
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeImageModal();
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
